@@ -7,12 +7,12 @@ class imagick (
 		$php_package = 'php5'
 	}
 	else {
-		$php_package = "$php"
+		$php_package = "php$php"
 	}
 
 	package { "${$php_package}-imagick":
 		ensure  => latest,
-		require => Package["php${$php_package}-fpm"],
-		notify  => Service["php${$php_package}-fpm"]
+		require => Package["${$php_package}-fpm"],
+		notify  => Service["${$php_package}-fpm"]
 	}
 }
