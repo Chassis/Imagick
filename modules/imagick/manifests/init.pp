@@ -1,10 +1,18 @@
 class imagick (
-$path = "/vagrant/extensions/imagick"
+	$path = "/vagrant/extensions/imagick",
+	$php = $imagick_config[php]
 ) {
 
-  package { 'php5-imagick':
-    ensure  => latest,
-    require => Package['php5-fpm'],
-    notify  => Service['php5-fpm']
-  }
+	if versioncmp( "${$php}", '5.4') <= 0 {
+		$php_package = 'php5'
+	}
+	else {
+		$php_package = "php$php"
+	}
+
+	package { "${$php_package}-imagick":
+		ensure  => latest,
+		require => Package["${$php_package}-fpm"],
+		notify  => Service["${$php_package}-fpm"]
+	}
 }
