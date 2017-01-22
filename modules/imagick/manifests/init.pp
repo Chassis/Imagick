@@ -1,6 +1,6 @@
 class imagick (
-	$path = "/vagrant/extensions/imagick"
-	$php = $vip_config[php]
+	$path = "/vagrant/extensions/imagick",
+	$php = $imagick_config[php]
 ) {
 
 	if versioncmp( "${$php}", '5.4') <= 0 {
@@ -12,7 +12,7 @@ class imagick (
 
 	package { "${$php_package}-imagick":
 		ensure  => latest,
-		require => Package['${$php_package}-fpm'],
-		notify  => Service['${$php_package}-fpm']
+		require => Package["php${$php_package}-fpm"],
+		notify  => Service["php${$php_package}-fpm"]
 	}
 }
