@@ -17,7 +17,7 @@ class imagick (
     notify  => Service["${$php_package}-fpm"]
   }
 
-  package { "imagemagick":
+  package { 'imagemagick':
     ensure  => latest,
     require => Package["${$php_package}-fpm"],
     notify  => Service["${$php_package}-fpm"]
