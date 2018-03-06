@@ -18,7 +18,7 @@ class imagick (
     $php_package = "php${php}"
   }
 
-  package { "php-imagick":
+  package { 'php-imagick':
     ensure  => $package,
     require => Package["${$php_package}-fpm"],
     notify  => Service["${$php_package}-fpm"]
