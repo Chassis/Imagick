@@ -1,10 +1,11 @@
 # A Chassis extension to install and configure ImageMagick on your server
 class imagick (
+  $config,
   $path = '/vagrant/extensions/imagick',
-  $php = $::imagick_config[php]
+  $php = $config[php]
 ) {
 
-  if versioncmp( "${$php}", '5.4') <= 0 {
+  if versioncmp( $php, '5.4') <= 0 {
     $php_package = 'php5'
   }
   else {
