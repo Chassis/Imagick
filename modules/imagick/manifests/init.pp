@@ -18,7 +18,7 @@ class imagick (
 		$php_package = "php${php}"
 	}
 
-	package { "${php_package}-imagick":
+	package { "$php_package-imagick":
 		ensure  => $package,
 		require => [
 			Apt::Ppa['ppa:ondrej/php'],
