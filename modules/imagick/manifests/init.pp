@@ -37,4 +37,24 @@ class imagick (
 		],
 		notify  => Service["${php_package}-fpm"]
 	}
+
+	package { 'libwebp-dev':
+		ensure  => $package,
+		require => [
+			Apt::Ppa['ppa:ondrej/php'],
+			Apt::Ppa['ppa:ondrej/php-qa'],
+			Class['apt::update'],
+		],
+		notify  => Service["${php_package}-fpm"]
+	}
+
+	package { 'webp':
+		ensure  => $package,
+		require => [
+			Apt::Ppa['ppa:ondrej/php'],
+			Apt::Ppa['ppa:ondrej/php-qa'],
+			Class['apt::update'],
+		],
+		notify  => Service["${php_package}-fpm"]
+	}
 }
